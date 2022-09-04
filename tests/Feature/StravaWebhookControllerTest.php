@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class StravaWebhookServiceTest extends TestCase
+class StravaWebhookControllerTest extends TestCase
 {
     /**
-     * @skip
+     * @test
      * 
      * @return void
      */
@@ -19,7 +19,7 @@ class StravaWebhookServiceTest extends TestCase
     {
         $response = $this->get(route('strava.webhook.index'));
 
-        $response->assertStatus(200);
+        $response->assertStatus(403);
     }
 
     /**

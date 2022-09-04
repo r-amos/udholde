@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Requests\StravaSubscriptionValidationRequest;
 
 class StravaWebhookController extends Controller
@@ -15,20 +16,22 @@ class StravaWebhookController extends Controller
      */
     public function index(StravaSubscriptionValidationRequest $request)
     {
+        Log::debug('Subscription Received');
         return [
             'hub.challenge' => $request->input('hub_challenge')
         ];
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Process A Strava Event
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        return 'Event Received';
+        Log::debug('Strava Event Received');
+        Log::debug($request->toArray());
     }
 
     /**
